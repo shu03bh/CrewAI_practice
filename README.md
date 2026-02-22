@@ -1,5 +1,3 @@
-
-
 ```markdown
 # 🤖 CrewAI Practice Projects – Multi-Agent Systems
 
@@ -7,21 +5,22 @@ This repository contains my practice implementations of multi-agent systems usin
 
 It includes two separate AI crews:
 
-1. 📝 Research & Blog Writer Crew
-2. 📊 Market Research Analyst Crew
+1. 📝 Research & Blog Writer Crew  
+2. 📊 Market Research Analyst Crew  
 
-Both projects demonstrate how multiple AI agents collaborate to complete structured tasks.
+Both projects demonstrate how multiple AI agents collaborate in structured workflows using roles, goals, tasks, and tools.
 
 ---
 
 ## 🧠 About CrewAI
 
-CrewAI is a Python framework used to build multi-agent systems where:
+CrewAI is a Python framework for building multi-agent systems.  
+It allows developers to:
 
-- Each agent has a role and goal
-- Tasks are assigned to specific agents
-- Agents collaborate in structured workflows
-- Execution is autonomous using `kickoff()`
+- Define specialized agents with roles and goals
+- Assign tasks to specific agents
+- Control workflow execution (Sequential / Hierarchical)
+- Run autonomous multi-agent pipelines using `kickoff()`
 
 ---
 
@@ -29,24 +28,37 @@ CrewAI is a Python framework used to build multi-agent systems where:
 
 ## 📌 Overview
 
-This crew simulates a content creation pipeline where:
+This project simulates a structured content creation pipeline.
 
-1. Research Agent gathers information
-2. Writer Agent creates a blog post
+### Workflow
 
-### 🔹 Workflow
+```
 
-User Topic → Research Agent → Writer Agent → Final Blog Output
+User Topic
+↓
+Research Agent
+↓
+Writer Agent
+↓
+Final Blog Output
 
-### 🔹 Process Type
-Sequential execution
+```
 
-### 🔹 Features
+### Description
 
-- Goal-oriented agents
-- Task-based workflow
-- Structured output
+- The **Research Agent** gathers and structures information about the given topic.
+- The **Writer Agent** converts research into a formatted blog post.
+
+### Process Type
+
+Sequential execution.
+
+### Features
+
+- Goal-driven agents
+- Clear task separation
 - Dynamic topic input
+- Structured multi-step workflow
 
 ---
 
@@ -54,50 +66,64 @@ Sequential execution
 
 ## 📌 Overview
 
-This crew simulates a market analysis workflow where agents:
+This project simulates a product market analysis workflow using multiple agents.
 
-1. Analyze a product idea
-2. Perform competitor research
-3. Generate a structured market report
+### Workflow
 
-### 🔹 Workflow
+```
 
-Product Idea → Market Research Agent → Analysis → Final Report
+Product Idea
+↓
+Market Research Agent
+↓
+Competitor Analysis
+↓
+Final Market Report
 
-### 🔹 Features
+```
 
-- Analytical reasoning
-- Structured reporting
-- Tool usage 
-- Goal-driven analysis
+### Description
 
-### Tools Used 
+- The agent performs market research on a given product idea.
+- It gathers online insights using tools.
+- It generates a structured analytical report including recommendations.
 
-- SerperDevTool
-- ScrapeWebsiteTool
-- SeleniumScrapingTool
+### Tools Used
+
+- `SerperDevTool`
+- `ScrapeWebsiteTool`
+- `SeleniumScrapingTool`
+
+### Features
+
+- Tool-integrated agent execution
+- Structured report generation
+- Market reasoning workflow
+- Autonomous task execution
 
 ---
 
-# 🏗 Architecture Overview
+# 🏗 Overall Architecture
+
+Both projects follow CrewAI’s four core components:
 
 ```
 
 User Input
 ↓
-Crew
+Crew (Multi-Agent System)
 ↓
-Agents
+Agents (Specialized Roles)
 ↓
-Tasks
+Tasks (Defined Work Units)
 ↓
-Tools 
+Tools (Optional External Actions)
 ↓
 Final Output
 
 ```
 
-Both projects follow CrewAI’s core pillars:
+Core pillars used:
 
 - Agents
 - Tasks
@@ -111,7 +137,7 @@ Both projects follow CrewAI’s core pillars:
 - Python 3.10+
 - CrewAI
 - UV (Package Manager)
-- YAML configuration
+- YAML Configuration
 - OpenAI / Groq LLM
 
 ---
@@ -124,11 +150,15 @@ crew-ai/
 │
 ├── research_blog_writer/
 │   ├── config/
+│   │   ├── agents.yml
+│   │   ├── tasks.yml
 │   ├── crew.py
 │   ├── main.py
 │
 ├── market_research_analyst/
 │   ├── config/
+│   │   ├── agents.yml
+│   │   ├── tasks.yml
 │   ├── crew.py
 │   ├── main.py
 │
@@ -141,7 +171,7 @@ crew-ai/
 
 # 🔧 Installation
 
-### 1️⃣ Clone Repository
+## 1️⃣ Clone Repository
 
 ```
 
@@ -150,7 +180,7 @@ cd your-repo-name
 
 ```
 
-### 2️⃣ Install UV
+## 2️⃣ Install UV
 
 ```
 
@@ -158,7 +188,7 @@ pip install uv
 
 ```
 
-### 3️⃣ Install CrewAI
+## 3️⃣ Install CrewAI
 
 ```
 
@@ -166,9 +196,9 @@ uv tool install crewai
 
 ```
 
-### 4️⃣ Add API Key
+## 4️⃣ Add API Key
 
-Create `.env` file:
+Create a `.env` file in the root directory:
 
 ```
 
@@ -176,11 +206,13 @@ OPENAI_API_KEY=your_api_key_here
 
 ```
 
+Make sure `.env` is included in `.gitignore`.
+
 ---
 
 # ▶️ Running the Projects
 
-### Run Research & Blog Writer
+## Run Research & Blog Writer
 
 ```
 
@@ -189,7 +221,7 @@ python main.py
 
 ```
 
-### Run Market Research Analyst
+## Run Market Research Analyst
 
 ```
 
@@ -202,16 +234,18 @@ python main.py
 
 # 📊 Example Outputs
 
-## Blog Writer Crew Output:
-- Topic-based blog article
-- Structured sections
-- SEO-friendly formatting
+## Blog Writer Crew
 
-## Market Research Crew Output:
+- Topic-based blog article
+- Structured headings
+- Organized sections
+
+## Market Research Crew
+
 - Market overview
-- Competitor analysis
-- SWOT insights
-- Final recommendation
+- Competitor insights
+- SWOT analysis
+- Final recommendations
 
 ---
 
@@ -222,26 +256,8 @@ Through these projects, I practiced:
 - Designing multi-agent systems
 - Defining agent roles and goals
 - Task orchestration
-- YAML configuration
-- Structured execution using `kickoff()`
+- YAML-based configuration
 - Tool integration
+- Structured execution using `kickoff()`
 
 ---
-
-# 🚀 Future Improvements
-
-- Add structured JSON output
-- Add FastAPI API layer
-- Add long-term memory (RAG)
-- Add cost monitoring
-- Add human-in-the-loop approval
-
----
-
-# 🔐 Security
-
-- API keys stored in `.env`
-- `.env` excluded via `.gitignore`
-- No sensitive data committed
-```
-
